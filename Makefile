@@ -76,13 +76,10 @@ LDFLAGS=-T glue/$(ARCH)/elf_efi.lds -Bsymbolic -shared -nostdlib -znocombreloc
 all: $(EXAMPLES)
 
 nyanload.so: $(COMMON) nyanload.o
-nyanload.o: nyan.h nyanbutt1.h
+nyanload.o: nyan.h 
 
 nyan.h: resources/nyan.pbm nyan-gen
 	./nyan-gen resources/nyan.pbm nyan.h nyancat
-
-nyanbutt1.h: resources/butt1.pbm nyan-gen
-	./nyan-gen resources/butt1.pbm nyanbutt1.h nyanbutt1
 
 nyan-gen: nyan-gen.c
 	gcc nyan-gen.c -o nyan-gen

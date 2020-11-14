@@ -35,7 +35,6 @@
 #include "efierr.h"
 #include "efiprot.h"
 #include "nyan.h"
-#include "nyanbutt1.h"
 
 static EFI_GUID GraphicsOutputProtocolGUID = EFI_GRAPHICS_OUTPUT_PROTOCOL_GUID;
 
@@ -116,23 +115,12 @@ while (1) {
 		}
 	}
 
-	if (offset) {
-		for (i = 0; i < 10; i++) { // x
-			for (j = 0; j < 20; j++) { // y
-				if (nyancat[j*35+i].Red != p.Red && nyancat[j*35+i].Green != p.Green &&
-				    nyancat[j*35+i].Blue != p.Blue)
-					status = graphicsProtocol->Blt(graphicsProtocol, &nyancat[j*35+i],
-						EfiBltVideoFill, 0, 0, xtopleft+i*SCALE, ytopleft+j*SCALE, SCALE, SCALE, 0);
-			}
-		}
-	} else {
-		for (i = 0; i < 10; i++) { // x
-			for (j = 0; j < 20; j++) { // y
-				if (nyanbutt1[j*10+i].Red != p.Red && nyanbutt1[j*10+i].Green != p.Green &&
-				    nyanbutt1[j*10+i].Blue != p.Blue)
-					status = graphicsProtocol->Blt(graphicsProtocol, &nyanbutt1[j*10+i],
-						EfiBltVideoFill, 0, 0, xtopleft+i*SCALE, ytopleft+j*SCALE, SCALE, SCALE, 0);
-			}
+	for (i = 0; i < 10; i++) { // x
+		for (j = 0; j < 20; j++) { // y
+			if (nyancat[j*35+i].Red != p.Red && nyancat[j*35+i].Green != p.Green &&
+				nyancat[j*35+i].Blue != p.Blue)
+				status = graphicsProtocol->Blt(graphicsProtocol, &nyancat[j*35+i],
+					EfiBltVideoFill, 0, 0, xtopleft+i*SCALE, ytopleft+j*SCALE, SCALE, SCALE, 0);
 		}
 	}
 	status = systemTable->ConIn->ReadKeyStroke(systemTable->ConIn, &keys[keysPos]);
