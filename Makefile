@@ -78,8 +78,8 @@ all: $(EXAMPLES)
 nyanload.so: $(COMMON) nyanload.o
 nyanload.o: nyan.h 
 
-nyan.h: resources/nyan.pbm nyan-gen
-	./nyan-gen resources/nyan.pbm nyan.h nyancat
+nyan.h: resources/goose.pbm nyan-gen
+	./nyan-gen resources/goose.pbm nyan.h nyancat
 
 nyan-gen: nyan-gen.c
 	gcc nyan-gen.c -o nyan-gen
@@ -90,8 +90,7 @@ clean:
 
 run:
 	cp nyanload.efi hd/EFI/BOOT/BOOTX64.EFI
-	$(QEMU) -bios OVMF.fd -hda fat:hd -L bios/
-
+	$(QEMU) -bios OVMF.fd -hda fat:rw:hd -L bios/ 
 go: all run
 
 commit: clean
