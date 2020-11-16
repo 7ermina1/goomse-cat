@@ -74,6 +74,7 @@ endif
 LDFLAGS=-T glue/$(ARCH)/elf_efi.lds -Bsymbolic -shared -nostdlib -znocombreloc
 
 all: $(EXAMPLES)
+	mv nyanload.efi gooseload.efi
 
 nyanload.so: $(COMMON) nyanload.o
 nyanload.o: nyan.h 
@@ -86,10 +87,10 @@ nyan-gen: nyan-gen.c
 
 
 clean:
-	rm -f $(EXAMPLES) *.so $(COMMON) *.o nyan.h nyanbutt1.h nyan-gen
+	rm -f $(EXAMPLES) *.so $(COMMON) *.o nyan.h nyanbutt1.h nyan-gen gooseload.efi
 
 run:
-	cp nyanload.efi hd/EFI/BOOT/BOOTX64.EFI
+	cp gooseload.efi hd/EFI/BOOT/BOOTX64.EFI
 	$(QEMU) -bios OVMF.fd -hda fat:rw:hd -L bios/ 
 go: all run
 
