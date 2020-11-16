@@ -6,7 +6,7 @@ have you ever wanted a moving goomsë cat as your bootloader? of course!
 
 now you can.
 
-![image]()
+![image](https://raw.githubusercontent.com/astr0n8t/goomse-cat/master/resources/gooseload.png)
 
 to exit the bootloader, enter the konami code.
 
